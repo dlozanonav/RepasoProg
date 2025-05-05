@@ -33,6 +33,7 @@ public class Main {
         //En el ftl se lee del reves, las 5 son las fils y las 3 son las columnas explicado
         String[][] mapa = new String[5][3];
 
+
         model.put("mapa",mapa);
         model.put("imagenes", imagenes);
         context.render("templates/index.ftl", model);
