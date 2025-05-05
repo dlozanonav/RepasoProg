@@ -15,7 +15,11 @@ public class Main {
             config.fileRenderer(new JavalinFreemarker());
         }).start(4567);
 
+        app.get("/",Main::paginaPrincipal);
 
+    }
+
+    private static void paginaPrincipal(Context context) {
 
     }
 }
