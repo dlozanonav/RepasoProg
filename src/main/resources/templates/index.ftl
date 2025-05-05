@@ -10,11 +10,28 @@
         <body>
             <h1>Titulo web</h1>
             <h2>Este es el h2</h2>
-            <div class="array-imagenes">Arrai de imagenes</div>
+            <div class="array-imagenes">
+                <#list imagenes as item>
+                    ${item}
+                </#list>
+            </div>
         <div class="botones">
             <button>Cargar</button>
             <button>Guardar</button>
         </div>
-        <div>Mapa de imagenes</div>
+        <div>
+            <#list mapa as fila>
+                <div>
+                  <#list fila as celda>
+                    <#if celda??>
+                        ${celda}
+                        <#else>
+                            null
+                    </#if>
+                    </#list>
+                </div>
+            </#list>
+            </div>
+        </div>
         </body>
 </html>

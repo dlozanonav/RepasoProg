@@ -6,6 +6,10 @@ import io.javalin.http.Handler;
 import io.javalin.rendering.template.JavalinFreemarker;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -20,6 +24,18 @@ public class Main {
     }
 
     private static void paginaPrincipal(Context context) {
+
+        Map<String, Object> model = new HashMap<>();
+        String[] imagenes = new String[3];
+        imagenes[0] = "Oier";
+        imagenes[1] = "Daniela";
+        imagenes[2] = "Devid";
+        //En el ftl se lee del reves, las 5 son las fils y las 3 son las columnas explicado
+        String[][] mapa = new String[5][3];
+
+        model.put("mapa",mapa);
+        model.put("imagenes", imagenes);
+        context.render("templates/index.ftl", model);
 
     }
 }
