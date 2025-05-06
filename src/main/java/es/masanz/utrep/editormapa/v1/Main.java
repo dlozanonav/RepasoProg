@@ -30,8 +30,8 @@ public class Main {
         imagenes[0] = "Oier";
         imagenes[1] = "Daniela";
         imagenes[2] = "Devid";
-        //En el ftl se lee del reves, las 5 son las fils y las 3 son las columnas explicado
-        String[][] mapa = new String[5][3];
+        //En el ftl se lee del reves, el valor de la izuquierda son las filas y el de la derecha las columnas
+        String[][] mapa = new String[3][5];
 
 
         model.put("mapa",mapa);

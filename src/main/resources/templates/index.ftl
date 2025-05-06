@@ -19,19 +19,18 @@
             <button>Cargar</button>
             <button>Guardar</button>
         </div>
-        <div>
+        <div class="cuadricula">
             <#list mapa as fila>
-                <div>
-                  <#list fila as celda>
-                    <#if celda??>
-                        ${celda}
-                        <#else>
-                            null
+              <#list fila as celda>
+                  <div class="celda">
+                        <#if celda??>
+                           ${celda}
+                    <#else>
+                     null
                     </#if>
-                    </#list>
                 </div>
-            </#list>
-            </div>
+         </#list>
+        </#list>
         </div>
         </body>
 </html>
