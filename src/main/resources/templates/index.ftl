@@ -12,7 +12,7 @@
             <h2>Este es el h2</h2>
             <div class="array-imagenes">
                 <#list imagenes as item>
-                    ${item}
+                    <img src="${item}">
                 </#list>
             </div>
         <div class="botones">
@@ -24,7 +24,7 @@
               <#list fila as celda>
                   <div class="celda">
                         <#if celda??>
-                           ${celda}
+                          <div class="sprite"><img src=" ${celda}"></div>
                     <#else>
                      null
                     </#if>

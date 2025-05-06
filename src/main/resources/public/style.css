@@ -1,21 +1,29 @@
 h1,h2, .botones{
     text-align: center;
 }
-
+img{
+    width: 60px;
+    height: 60px;
+}
 .array-imagenes{
     overflow:auto;
+    white-space: nowrap;
+    image-rendering: pixelated;
 }
 .cuadricula {
     display: grid;
-    grid-template-columns: repeat(5,100px);
+    grid-template-columns: repeat(5,auto);
     justify-content: center;
 }
 
 .celda {
-    width: 100px;
-    height: 100px;
+    width: auto;
+    height: auto;
     border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.sprite{
+    image-rendering: pixelated;
 }
