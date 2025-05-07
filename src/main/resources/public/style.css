@@ -24,6 +24,11 @@ img{
     justify-content: center;
     align-items: center;
 }
-.sprite{
+.mapa{
     image-rendering: pixelated;
+}
+.selected{
+    width: 80px;
+    height: 80px;
+    border: 2px solid red;
 }
