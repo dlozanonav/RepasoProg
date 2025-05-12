@@ -12,7 +12,7 @@ img{
 }
 .cuadricula {
     display: grid;
-    grid-template-columns: repeat(5,auto);
+    grid-template-columns: repeat(9,auto);
     justify-content: center;
 }
 

@@ -19,6 +19,7 @@
             <button>Cargar</button>
             <button>Guardar</button>
         </div>
+    
         <div class="cuadricula">
             <#list mapa as fila>
                 <#list fila as celda>
@@ -34,6 +35,13 @@
                 </#list>
             </#list>
         </div>
+
+        <form action="/getSprite" method="post">
+            <input type="text" name="sprite">
+            <input type="text" name="columna">
+            <input type="text" name="fila">
+            <button type="submit">Enviar</button>
+        </form>
         <script>
             var spriteGlobal = "";
 
@@ -45,13 +53,26 @@
                 }
 
                 elemento.classList.add("selected");
-                spriteGlobal = elemento.src; // Guardar la URL de la imagen seleccionada
+                spriteGlobal = elemento.src; 
+
             }
+
 
             function cambiarFondoMapa(celda) {
                 if (spriteGlobal !== "") {
                     celda.src = spriteGlobal;
                 }
+            }
+
+            function enviarDatos(fila,columna,sprite){
+                fetch("/getSprite", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: 'fila='+encodeURIComponent(fila)+'&columna='+encodeURIComponent(columna)+'&sprite='+encodeURIComponent(sprite)
+                    
+                })
             }
         </script>
     </body>

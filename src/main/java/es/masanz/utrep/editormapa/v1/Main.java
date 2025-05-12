@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -23,6 +24,7 @@ public class Main {
         }).start(4567);
 
         app.get("/", Main::paginaPrincipal);
+        app.post("/getSprite", Main::obtenerSprite);
 
     }
 
@@ -46,7 +48,7 @@ public class Main {
 
 
     private static String[][] generarMapa(String[] imagenes) {
-        String[][] mapa= new  String[3][5];
+        String[][] mapa= new  String[9][15];
         for (int i = 0; i < mapa.length; i++) {
             for (int j = 0; j < mapa[0].length; j++) {
                  mapa[i][j] = imagenes[(int) (Math.random() * imagenes.length)];
@@ -57,7 +59,7 @@ public class Main {
 
     private static String[] cargarSprites() {
         int tamanoArray = 0;
-        File file = new File("C:/Users/alumMA/Documents/EditorMapaV1/src/main/resources/public/pruebas");
+        File file = new File("src/main/resources/public/pruebas");
         if (file.exists() && !file.isFile()) {
             File[] archivos = file.listFiles();
             for (File archivo : archivos) {
@@ -80,4 +82,29 @@ public class Main {
         }
         return imagenes;
     }
+
+    private static String obtenerSprite(Context context){
+        int contCom=0;
+        String[] cadenaTexto = new String[3];
+        cadenaTexto[0]=context.formParam("columna");
+        cadenaTexto[1]= context.formParam("fila");
+        cadenaTexto[2]= context.formParam("sprite");
+        String spriteSelect="";
+        for (String s : cadenaTexto) {
+            if (contCom==0){
+                spriteSelect=spriteSelect + s;
+                contCom++;
+            }
+            else {
+                spriteSelect=spriteSelect+","+s;
+            }
+        }
+        System.out.println(spriteSelect);
+        return spriteSelect;
+    }
 }
+
+
+
+
+
