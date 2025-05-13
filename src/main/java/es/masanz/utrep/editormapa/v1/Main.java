@@ -14,7 +14,9 @@ import java.util.Objects;
 
 public class Main {
 
+    private static String[][] mapa;
     public static void main(String[] args) {
+
 
 
         Javalin app = Javalin.create(config -> {
@@ -37,7 +39,9 @@ public class Main {
 
 
         //En el ftl se lee del reves, el valor de la izuquierda son las filas y el de la derecha las columnas
-        String[][] mapa = generarMapa(imagenes);
+        if (mapa == null) {
+            mapa = generarMapa(imagenes); // Solo se genera una vez
+        }
 
 
         model.put("mapa", mapa);
@@ -49,8 +53,6 @@ public class Main {
 
     private static String[][] generarMapa(String[] imagenes) {
         String[][] mapa= new  String[12][8];
-
-
             for (int i = 0; i < mapa.length; i++) {
                 for (int j = 0; j < mapa[0].length; j++) {
                     mapa[i][j] = imagenes[(int) (Math.random() * imagenes.length)];
@@ -58,7 +60,6 @@ public class Main {
             }
             return mapa;
     }
-
     private static String[] cargarSprites() {
         int tamanoArray = 0;
         File file = new File("src/main/resources/public/pruebas");
@@ -85,27 +86,20 @@ public class Main {
         return imagenes;
     }
 
-    private static String obtenerSprite(Context context){
-        int contCom=0;
-        String[] cadenaTexto = new String[3];
-        cadenaTexto[0]=context.formParam("fila");
-        cadenaTexto[1]= context.formParam("columna");
-        cadenaTexto[2]= context.formParam("sprite");
-        String spriteSelect="";
+    private static String obtenerSprite(Context context) {
+        String filaClick = context.formParam("fila");
+        String columnaClick = context.formParam("columna");
+        String sprite = context.formParam("sprite");
 
-        for (String s : cadenaTexto) {
-            if (contCom==0){
-                spriteSelect=spriteSelect + s;
-                contCom++;
-            }
-            else {
-                spriteSelect=spriteSelect+","+s;
-            }
-        }
-        System.out.println(spriteSelect);
-        System.out.println(spriteSelect.split(","));
-        return spriteSelect;
+        int fila = Integer.parseInt(filaClick);
+        int columna = Integer.parseInt(columnaClick);
+
+        mapa[fila][columna] = sprite;
+
+        return "";
     }
+
+
 }
 
 
