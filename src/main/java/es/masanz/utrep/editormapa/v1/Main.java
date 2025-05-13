@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class Main {
 
-    private static String[][] mapa;
+    private static String[][] mapa ;
     public static void main(String[] args) {
 
 
@@ -52,13 +52,17 @@ public class Main {
 
 
     private static String[][] generarMapa(String[] imagenes) {
-        String[][] mapa= new  String[12][8];
-            for (int i = 0; i < mapa.length; i++) {
-                for (int j = 0; j < mapa[0].length; j++) {
-                    mapa[i][j] = imagenes[(int) (Math.random() * imagenes.length)];
+        String[][] mapal= new  String[9][15];
+        if (mapa==null) {
+            for (int i = 0; i < mapal.length; i++) {
+                for (int j = 0; j < mapal[0].length; j++) {
+                    mapal[i][j] = imagenes[(int) (Math.random() * imagenes.length)];
                 }
             }
+            return mapal;
+        }else {
             return mapa;
+        }
     }
     private static String[] cargarSprites() {
         int tamanoArray = 0;

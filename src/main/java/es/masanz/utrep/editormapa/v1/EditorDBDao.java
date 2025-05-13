@@ -16,6 +16,7 @@ public class EditorDBDao {
         base.hacerConsulta("MAPA4");
     }
 
+
     private String jdbcURL = "jdbc:mysql://localhost:3306/prom_junio";
     private String user = "root";
     private String pass = "root";
@@ -86,6 +87,7 @@ public class EditorDBDao {
             e.printStackTrace();
         }
     }
+
 
 }
 
