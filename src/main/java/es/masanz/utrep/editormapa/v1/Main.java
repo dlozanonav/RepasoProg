@@ -86,8 +86,8 @@ public class Main {
     private static String obtenerSprite(Context context){
         int contCom=0;
         String[] cadenaTexto = new String[3];
-        cadenaTexto[0]=context.formParam("columna");
-        cadenaTexto[1]= context.formParam("fila");
+        cadenaTexto[0]=context.formParam("fila");
+        cadenaTexto[1]= context.formParam("columna");
         cadenaTexto[2]= context.formParam("sprite");
         String spriteSelect="";
         for (String s : cadenaTexto) {

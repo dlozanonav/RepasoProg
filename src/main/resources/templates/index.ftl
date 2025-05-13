@@ -23,10 +23,12 @@
         <div class="cuadricula">
             <#list mapa as fila>
                 <#list fila as celda>
-                    <div class="celda">
+                    <div class="celda" data-fila="${fila?index}" data-columna="${celda?index}">
                         <#if celda??>
                             <div class="mapa">
-                                <img onclick="javascript:cambiarFondoMapa(this);" src="${celda}">
+                                <img
+                                        onclick="cambiarFondoMapa(this); enviarDatos(${fila?index}, ${celda?index}, '${celda}')"
+                                        src="${celda}">
                             </div>
                         <#else>
                             null
@@ -34,13 +36,14 @@
                     </div>
                 </#list>
             </#list>
+
         </div>
 
         <form action="/getSprite" method="post">
-            <input type="text" name="sprite">
-            <input type="text" name="columna">
-            <input type="text" name="fila">
-            <button type="submit">Enviar</button>
+            <input type="hidden" name="sprite">
+            <input type="hidden" name="columna">
+            <input type="hidden" name="fila">
+            <button type="submit" style="display: none">Enviar</button>
         </form>
         <script>
             var spriteGlobal = "";
@@ -71,7 +74,6 @@
                         "Content-Type": "application/x-www-form-urlencoded"
                     },
                     body: 'fila='+encodeURIComponent(fila)+'&columna='+encodeURIComponent(columna)+'&sprite='+encodeURIComponent(sprite)
-                    
                 })
             }
         </script>
