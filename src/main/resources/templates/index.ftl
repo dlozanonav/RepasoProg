@@ -26,9 +26,7 @@
                     <div class="celda" data-fila="${fila?index}" data-columna="${celda?index}">
                         <#if celda??>
                             <div class="mapa">
-                                <img
-                                        onclick="cambiarFondoMapa(this); enviarDatos(${fila?index}, ${celda?index}, '${celda}')"
-                                        src="${celda}">
+                                <img onclick="cambiarFondoMapa(this); enviarDatos(${fila?index}, ${celda?index}, '${celda}')" src="${celda}">
                             </div>
                         <#else>
                             null

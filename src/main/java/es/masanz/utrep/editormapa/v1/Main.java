@@ -90,6 +90,7 @@ public class Main {
         cadenaTexto[1]= context.formParam("columna");
         cadenaTexto[2]= context.formParam("sprite");
         String spriteSelect="";
+
         for (String s : cadenaTexto) {
             if (contCom==0){
                 spriteSelect=spriteSelect + s;
