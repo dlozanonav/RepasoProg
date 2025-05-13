@@ -14,8 +14,8 @@ import java.util.Objects;
 
 public class Main {
 
-
     public static void main(String[] args) {
+
 
         Javalin app = Javalin.create(config -> {
             // Para cuando queramos servir archivos estáticos (CSS, JS, imágenes)
@@ -48,13 +48,15 @@ public class Main {
 
 
     private static String[][] generarMapa(String[] imagenes) {
-        String[][] mapa= new  String[9][15];
-        for (int i = 0; i < mapa.length; i++) {
-            for (int j = 0; j < mapa[0].length; j++) {
-                 mapa[i][j] = imagenes[(int) (Math.random() * imagenes.length)];
+        String[][] mapa= new  String[12][8];
+
+
+            for (int i = 0; i < mapa.length; i++) {
+                for (int j = 0; j < mapa[0].length; j++) {
+                    mapa[i][j] = imagenes[(int) (Math.random() * imagenes.length)];
+                }
             }
-        }
-        return mapa;
+            return mapa;
     }
 
     private static String[] cargarSprites() {
@@ -101,9 +103,11 @@ public class Main {
             }
         }
         System.out.println(spriteSelect);
+        System.out.println(spriteSelect.split(","));
         return spriteSelect;
     }
 }
+
 
 
 

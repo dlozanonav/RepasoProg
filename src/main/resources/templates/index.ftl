@@ -52,12 +52,9 @@
                 if (antiguoSeleccionado != undefined) {
                     antiguoSeleccionado.classList.remove("selected");
                 }
-
                 elemento.classList.add("selected");
-                spriteGlobal = elemento.src; 
-
+                spriteGlobal = elemento.src;
             }
-
 
             function cambiarFondoMapa(celda) {
                 if (spriteGlobal !== "") {
