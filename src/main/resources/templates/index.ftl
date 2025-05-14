@@ -25,8 +25,10 @@
                 <#list fila as celda>
                     <div class="celda" data-fila="${fila?index}" data-columna="${celda?index}">
                         <#if celda??>
-                            <div class="mapa">
-                                <img onclick="cambiarFondoMapa(this); enviarDatos(${fila?index}, ${celda?index}, '${celda}')" src="${celda}">
+                            <div class="mapa">  <#-- Estaba enviando en vez del sprite global que dice la imagen que he seleccionado,
+                             el sprite que corresponde al inicio a la celda, por eso al refrescar no cambiaba, en celda esta el sprite
+                             que se usa al generar el mapa pero claro, para luego GUARDAR el sprite seleccionado, ese esta guardado en spriteglobal-->
+                                <img onclick="cambiarFondoMapa(this); enviarDatos(${fila?index}, ${celda?index}, spriteGlobal)" src="${celda}">
                             </div>
                         <#else>
                             null

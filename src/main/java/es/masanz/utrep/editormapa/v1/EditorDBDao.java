@@ -11,9 +11,7 @@ public class EditorDBDao {
         EditorDBDao base = new EditorDBDao();
 
         base.establecerConexion();
-        base.hacerConsulta("MAPA1");
-        base.insertarSprite("MAPA4", 1, 1, "prueba");
-        base.hacerConsulta("MAPA4");
+        base.insertarTamaNo("MAPA1",3,5);
     }
 
 
@@ -74,6 +72,23 @@ public class EditorDBDao {
             e.printStackTrace();
         }
     }
+
+    public void insertarTamaNo(String nombre, int fila, int columna){
+        String sql ="INSERT INTO tamano_mapa (nombre,tamano) VALUES (?,?)";
+       // String sql ="INSERT INTO tamano_mapa (nombre,columnas,filas) VALUES (?,?,?)";
+        try{
+            PreparedStatement pst = conexion.prepareStatement(sql);
+            pst.setString(1,nombre);
+            String tamanio= columna + ","+fila;
+            pst.setString(2, tamanio);
+            //pst.setInt(2,columna);
+            //pst.setInt(3,filas)
+            pst.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public void actualizarSprite(String nombre, int fila, int columna, String imagenes){
         String sql = "UPDATE editor_mapa SET fila=?, columna=?, imagenes=? WHERE nombre=?";
         try {
