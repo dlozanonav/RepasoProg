@@ -8,9 +8,18 @@
         <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
     </head>
     <body>
-        <h1>Titulo web</h1>
-        <h2>Este es el h2</h2>
-        <div class="array-imagenes">
+        <h1>Creador de mapas</h1>
+            <div class="selector-rutas center">
+                <form action="/seleccionar-mapa" method="POST">
+                    <select name="mapaEditable">
+                        <option value="Ruta1">Ruta 1</option>
+                        <option value="david">David</option>
+                    </select>
+                    <button type="submit">Cambiar</button>
+                </form>
+        </div>
+
+            <div class="array-imagenes">
             <#list imagenes as item>
                 <img onclick="javascript:spriteSeleccionado(this);" class="sprite" src="${item}" >
             </#list>
@@ -38,13 +47,6 @@
             </#list>
 
         </div>
-
-        <form action="/getSprite" method="post">
-            <input type="hidden" name="sprite">
-            <input type="hidden" name="columna">
-            <input type="hidden" name="fila">
-            <button type="submit" style="display: none">Enviar</button>
-        </form>
         <script>
             var spriteGlobal = "";
 

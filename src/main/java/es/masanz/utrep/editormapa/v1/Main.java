@@ -15,6 +15,9 @@ import java.util.Objects;
 public class Main {
 
     private static String[][] mapa = null;
+    private static int filas=9;
+    private static int columnas=15;
+
     public static void main(String[] args) {
 
 
@@ -27,8 +30,11 @@ public class Main {
 
         app.get("/", Main::paginaPrincipal);
         app.post("/getSprite", Main::obtenerSprite);
+        app.post("/seleccionar-mapa", Main::seleccionarMapa);
 
     }
+
+
 
     private static void paginaPrincipal(Context context) {
 
@@ -53,7 +59,7 @@ public class Main {
 
     private static String[][] generarMapa(String[] imagenes) {
         if (mapa == null) {
-            mapa = new String[9][15];
+            mapa = new String[filas][columnas];
             for (int i = 0; i < mapa.length; i++) {
                 for (int j = 0; j < mapa[0].length; j++) {
                     mapa[i][j] = imagenes[(int) (Math.random() * imagenes.length)];
@@ -61,6 +67,17 @@ public class Main {
             }
         }
         return mapa;
+    }
+
+    // David qué haces
+    private String[][] generarMapaVacio() {
+        String[][] tablero = new String[filas][columnas];
+        for (int fila = 0; fila < this.filas; fila++) {
+            for (int columna = 0; columna < this.columnas; columna++) {
+                tablero[fila][columna] = "";
+            }
+        }
+        return tablero;
     }
     private static String[] cargarSprites() {
         int tamanoArray = 0;
@@ -99,6 +116,13 @@ public class Main {
         mapa[fila][columna] = sprite;
 
         return "";
+    }
+
+    private static void seleccionarMapa( Context context) {
+       String mapaEditable = context.formParam("mapa");
+
+        context.redirect("/");
+
     }
 
 

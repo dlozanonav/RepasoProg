@@ -1,7 +1,5 @@
 package es.masanz.utrep.editormapa.v1;
 
-import es.masanz.utrep.editormapa.v1.service.EditorService;
-
 import java.sql.*;
 
 
@@ -74,22 +72,19 @@ public class EditorDBDao {
     }
 
     public void insertarTamaNo(String nombre, int fila, int columna){
-        String sql ="INSERT INTO tamano_mapa (nombre,tamano) VALUES (?,?)";
-       // String sql ="INSERT INTO tamano_mapa (nombre,columnas,filas) VALUES (?,?,?)";
+       String sql ="INSERT INTO mapas (nombre,columnas,filas) VALUES (?,?,?)";
         try{
             PreparedStatement pst = conexion.prepareStatement(sql);
             pst.setString(1,nombre);
-            String tamanio= columna + ","+fila;
-            pst.setString(2, tamanio);
-            //pst.setInt(2,columna);
-            //pst.setInt(3,filas)
+            pst.setInt(2,columna);
+            pst.setInt(3,fila);
             pst.executeUpdate();
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public void actualizarSprite(String nombre, int fila, int columna, String imagenes){
+    public boolean actualizarSprite(String nombre, int fila, int columna, String imagenes){
         String sql = "UPDATE editor_mapa SET fila=?, columna=?, imagenes=? WHERE nombre=?";
         try {
             PreparedStatement pst = conexion.prepareStatement(sql);
@@ -101,8 +96,11 @@ public class EditorDBDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
+    public void consultarMapa(String nombreMapa, String[][] mapa) {
 
+    }
 }
 
